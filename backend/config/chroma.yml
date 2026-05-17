@@ -5,7 +5,7 @@ data_path: data
 md5_hex_store: md5.text
 allowed_knowledge_file_type: ["text", "pdf"]
 
-chunk_size: 1000
-chunk_overlap: 100
-separators: ["\n\n", "\n", "。", "？", "！", "；", "，", ".", " ", ""]
-max_split_char_number: 1000    # 文本分割的阈值
+# 语义切割配置（SemanticChunker）
+# breakpoint_threshold_type 可选值：percentile（百分位）、standard_deviation（标准差）、interquartile（四分位）
+breakpoint_threshold_type: percentile
+breakpoint_threshold_amount: 95   # 百分位阈值，值越大切的块越少（语义越完整）

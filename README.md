@@ -236,10 +236,10 @@ data_path: data
 md5_hex_store: data/md5_hex_store/md5_hex_store.txt
 allow_knowledge_file_types: ["txt", "pdf"]
 
-# 文档切分配置
-chunk_size: 200
-chunk_overlap: 20
-separators: ["\n\n", "\n", "。", "！", "？", "!", "?", " ", ""]
+# 语义切割配置（SemanticChunker，余弦相似度）
+# breakpoint_threshold_type 可选值：percentile（百分位）、standard_deviation（标准差）、interquartile（四分位）
+breakpoint_threshold_type: percentile
+breakpoint_threshold_amount: 95   # 百分位阈值，值越大切的块越少（语义越完整）
 ```
 
 ### 启动服务
@@ -397,10 +397,10 @@ data_path: data
 md5_hex_store: data/md5_hex_store/md5_hex_store.txt
 allow_knowledge_file_types: ["txt", "pdf"]
 
-# 文档切分配置
-chunk_size: 200
-chunk_overlap: 20
-separators: ["\n\n", "\n", "。", "！", "？", "!", "?", " ", ""]
+# 语义切割配置（SemanticChunker，余弦相似度）
+# breakpoint_threshold_type 可选值：percentile（百分位）、standard_deviation（标准差）、interquartile（四分位）
+breakpoint_threshold_type: percentile
+breakpoint_threshold_amount: 95   # 百分位阈值，值越大切的块越少（语义越完整）
 ```
 
 ## 部署指南

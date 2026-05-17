@@ -5,7 +5,7 @@ from model.factory import chat_model, embed_model
 from utils.file_handler import txt_loader, pdf_loader, listdir_with_allowed_type, get_file_md5_hex
 from utils.logger_handler import logger
 from utils.path_tool import get_abs_path
-from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain_experimental.text_splitter import SemanticChunker
 from langchain_community.retrievers import BM25Retriever
 import os
 
@@ -18,11 +18,11 @@ class VectorStoreService(object):
             embedding_function=embed_model,
             persist_directory=chroma_conf["persist_directory"],
         )
-        self.spliter = RecursiveCharacterTextSplitter(
-            chunk_size=chroma_conf["chunk_size"],
-            chunk_overlap=chroma_conf["chunk_overlap"],
-            separators=chroma_conf["separators"],
-            length_function=len,
+        # 使用语义切割器（余弦相似度），在语义断层处切分，保证每块语义完整
+        self.spliter = SemanticChunker(
+            embeddings=embed_model,
+            breakpoint_threshold_type=chroma_conf["breakpoint_threshold_type"],
+            breakpoint_threshold_amount=chroma_conf["breakpoint_threshold_amount"],
         )
         self._bm25_retriever = None  # BM25 检索器（懒加载）
 
