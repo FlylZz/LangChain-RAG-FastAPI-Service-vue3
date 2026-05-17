@@ -134,7 +134,7 @@ flowchart TB
 ### 克隆项目
 
 ```bash
-git clone https://github.com/your-username/LangChain-RAG-FastAPI-Service-vue3.git
+git clone https://github.com/FlylZz/LangChain-RAG-FastAPI-Service-vue3.git
 cd LangChain-RAG-FastAPI-Service-vue3
 ```
 
