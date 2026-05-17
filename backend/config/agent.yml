@@ -1,0 +1,4 @@
+chat_model_name: qwen3.5-flash
+embedding_model_name: text-embedding-v4
+
+external_data_path: data/external/records.csv

@@ -1,0 +1,11 @@
+collection_name: agent
+persist_directory: chromadb
+k: 3
+data_path: data
+md5_hex_store: md5.text
+allowed_knowledge_file_type: ["text", "pdf"]
+
+chunk_size: 1000
+chunk_overlap: 100
+separators: ["\n\n", "\n", "。", "？", "！", "；", "，", ".", " ", ""]
+max_split_char_number: 1000    # 文本分割的阈值
